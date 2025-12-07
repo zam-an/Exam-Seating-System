@@ -1,4 +1,5 @@
 [projectworking.webm](https://github.com/user-attachments/assets/45838879-4c47-4eb6-af00-850c037dd07d)
+
 Exam Seating System
 The Exam Seating System is a web-based application designed to automate and manage the process of allocating seats to students for examinations. It streamlines the organization of exam venues, student assignments, room plans, departments, and related resources, providing a centralized dashboard for administrative users.
 
