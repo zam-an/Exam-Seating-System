@@ -111,13 +111,5 @@ This README focuses on how to run the project locally using XAMPP.
   - Improve UI/UX
   - Add tests and sample data
 
-## License
-- Add your chosen license (e.g., MIT) in a LICENSE file if you plan to share this project publicly.
 
----
-
-If you'd like, I can:
-- produce a ready-to-copy SQL schema and a sample `api/config.example.php` for XAMPP/PHP + MySQL,
-- rename and reorganize the frontend folder to remove spaces and update relative paths,
-- or create a minimal PHP backend (API endpoints) to accept CSV imports and persist students to a MySQL database.
 ```
