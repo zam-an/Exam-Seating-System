@@ -1,0 +1,22 @@
+/* Department-specific styles */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-completed {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.status-draft {
+    background: #fff3cd;
+    color: #856404;
+}

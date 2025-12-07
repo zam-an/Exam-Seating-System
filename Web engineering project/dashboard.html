@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="departments.html">Departments</a></li>
+                <li><a href="semesters.html">Semesters</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="plans.html">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-info">
+                        <h3>Departments</h3>
+                        <p class="stat-value" id="dept-count">0</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-info">
+                        <h3>Semesters</h3>
+                        <p class="stat-value" id="semester-count">0</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍🎓</div>
+                    <div class="stat-info">
+                        <h3>Students</h3>
+                        <p class="stat-value" id="student-count">0</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🏫</div>
+                    <div class="stat-info">
+                        <h3>Rooms</h3>
+                        <p class="stat-value" id="room-count">0</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <div class="stat-info">
+                        <h3>Plans</h3>
+                        <p class="stat-value" id="plan-count">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Recent Seating Plans</h2>
+                    <button class="btn btn-primary" onclick="window.location.href='plans.html'">View All</button>
+                </div>
+                <div class="table-container">
+                    <table id="recent-plans-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                <div class="quick-actions">
+                    <button class="btn-action" onclick="window.location.href='students.html'">
+                        <span class="action-icon">👨‍🎓</span>
+                        <span>Manage Students</span>
+                    </button>
+                    <button class="btn-action" onclick="window.location.href='rooms.html'">
+                        <span class="action-icon">🏫</span>
+                        <span>Manage Rooms</span>
+                    </button>
+                    <button class="btn-action" onclick="window.location.href='plans.html'">
+                        <span class="action-icon">📋</span>
+                        <span>Create Plan</span>
+                    </button>
+                    <button class="btn-action" onclick="window.location.href='semesters.html'">
+                        <span class="action-icon">📚</span>
+                        <span>Add Semester</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script src="scripts/dashboard.js?v=999"></script>
+</body>
+</html>

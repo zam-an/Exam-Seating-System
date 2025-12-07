@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Plans - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/plans.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="departments.html">Departments</a></li>
+                <li><a href="semesters.html">Semesters</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="plans.html" class="active">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Seating Plans</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>All Seating Plans</h2>
+                    <button class="btn btn-success" onclick="openModal('generatePlanModal')">Generate New Plan</button>
+                </div>
+                <div class="table-container">
+                    <table id="plans-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Students</th>
+                                <th>Rooms</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Generate Plan Modal -->
+    <div class="form-modal" id="generatePlanModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Generate Seating Plan</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="generatePlanForm">
+                <div class="form-group">
+                    <label for="planTitle">Plan Title</label>
+                    <input type="text" id="planTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="planDate">Plan Date</label>
+                    <input type="date" id="planDate" name="plan_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="selectedSemesters">Select Semesters</label>
+                    <div id="semestersChecklist" class="checklist">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="selectedRooms">Select Rooms</label>
+                    <div id="roomsChecklist" class="checklist">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="planStrategy">Seating Strategy</label>
+                    <select id="planStrategy" name="strategy">
+                        <option value="round-robin">Round Robin (by semester)</option>
+                        <option value="random">Random</option>
+                        <option value="preference">Consider Preferences</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('generatePlanModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Generate Plan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script src="scripts/plans.js?v=999"></script>
+</body>
+</html>

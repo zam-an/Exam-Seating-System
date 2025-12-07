@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/students.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="departments.html">Departments</a></li>
+                <li><a href="semesters.html">Semesters</a></li>
+                <li><a href="students.html" class="active">Students</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="plans.html">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Students</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>All Students</h2>
+                    <div>
+                        <button class="btn btn-warning" onclick="openModal('importModal')">Import from CSV</button>
+                        <button class="btn btn-success" onclick="openModal('addStudentModal')" style="margin-left: 0.5rem;">Add Student</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="students-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Roll No</th>
+                                <th>Full Name</th>
+                                <th>Seat Preference</th>
+                                <th>Semester ID</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Student Modal -->
+    <div class="form-modal" id="addStudentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Student</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="addStudentForm">
+                <div class="form-group">
+                    <label for="studentRollNo">Roll No</label>
+                    <input type="text" id="studentRollNo" name="roll_no" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentFullName">Full Name</label>
+                    <input type="text" id="studentFullName" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentSeatPref">Seat Preference</label>
+                    <select id="studentSeatPref" name="seat_pref">
+                        <option value="">None</option>
+                        <option value="front">Front</option>
+                        <option value="back">Back</option>
+                        <option value="window">Window</option>
+                        <option value="aisle">Aisle</option>
+                        <option value="center">Center</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="studentSemesterId">Semester ID</label>
+                    <input type="number" id="studentSemesterId" name="semester_id">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('addStudentModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Edit Student Modal -->
+    <div class="form-modal" id="editStudentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Student</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="editStudentForm">
+                <input type="hidden" id="editStudentId">
+                <div class="form-group">
+                    <label for="editStudentRollNo">Roll No</label>
+                    <input type="text" id="editStudentRollNo" name="roll_no" required>
+                </div>
+                <div class="form-group">
+                    <label for="editStudentFullName">Full Name</label>
+                    <input type="text" id="editStudentFullName" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="editStudentSeatPref">Seat Preference</label>
+                    <select id="editStudentSeatPref" name="seat_pref">
+                        <option value="">None</option>
+                        <option value="front">Front</option>
+                        <option value="back">Back</option>
+                        <option value="window">Window</option>
+                        <option value="aisle">Aisle</option>
+                        <option value="center">Center</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editStudentSemesterId">Semester ID</label>
+                    <input type="number" id="editStudentSemesterId" name="semester_id">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('editStudentModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Import Students from CSV Modal -->
+    <div class="form-modal" id="importModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Import Students from CSV</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="importForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="csvFile">Select CSV File</label>
+                    <input type="file" id="csvFile" name="csv_file" accept=".csv,.txt,text/csv,text/plain,*/*" required>
+                    <small>CSV format: roll_no, full_name, seat_pref (optional)</small>
+                    <small style="display:block;margin-top:5px;color:#666;">Tip: If you don't see your file, try changing the file type filter to "All Files" in the file picker</small>
+                </div>
+                <div class="form-group">
+                    <label for="importSemester">Assign to Semester</label>
+                    <select id="importSemester" name="semester_id" required>
+                        <option value="">Select Semester</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('importModal')">Cancel</button>
+                    <button type="submit" class="btn btn-warning">Import</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script src="scripts/students.js?v=999"></script>
+</body>
+</html>

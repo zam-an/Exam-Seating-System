@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Arrangement - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/seating.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="departments.html">Departments</a></li>
+                <li><a href="semesters.html">Semesters</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="plans.html">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1 id="planTitle">Seating Arrangement</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Plan Details</h2>
+                    <div>
+                        <button class="btn btn-warning" onclick="exportPDF()">Export PDF</button>
+                        <button class="btn btn-info" onclick="validatePlan()">Validate</button>
+                        <button class="btn btn-success" onclick="swapSeats()">Swap Seats</button>
+                    </div>
+                </div>
+                
+                <div class="plan-info">
+                    <div class="info-item">
+                        <strong>Plan:</strong> <span id="planName">Final Exams - Spring 2023</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Date:</strong> <span id="planDate">2023-05-15</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Status:</strong> <span id="planStatus" class="status-badge status-active">Active</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Total Students:</strong> <span id="totalStudents">350</span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Total Rooms:</strong> <span id="totalRooms">8</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Room Selection</h2>
+                </div>
+                <div class="room-selector">
+                    <select id="roomSelector" onchange="loadRoomSeating()">
+                        <option value="">Select a room</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2 id="currentRoomTitle">Seating Arrangement</h2>
+                </div>
+                <div class="seating-container">
+                    <div class="room-layout">
+                        <div class="room-header">
+                            <div class="teacher-desk">Teacher's Desk</div>
+                        </div>
+                        <div id="seatingGrid" class="seating-grid">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>Validation Results</h2>
+                </div>
+                <div id="validationResults" class="validation-results">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Swap Seats Modal -->
+    <div class="form-modal" id="swapSeatsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Swap Seats</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="swapSeatsForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="student1">First Student</label>
+                        <select id="student1" required>
+                            <option value="">Select student</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="student2">Second Student</label>
+                        <select id="student2" required>
+                            <option value="">Select student</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('swapSeatsModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Swap Seats</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script src="scripts/seatings.js?v=999"></script>
+</body>
+</html>

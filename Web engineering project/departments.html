@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/departments.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="departments.html" class="active">Departments</a></li>
+                <li><a href="semesters.html">Semesters</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="plans.html">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Departments</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>All Departments</h2>
+                    <button class="btn btn-success" onclick="openModal('addDeptModal')">Add Department</button>
+                </div>
+                <div class="table-container">
+                    <table id="departments-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Department Modal -->
+    <div class="form-modal" id="addDeptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Department</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="addDeptForm">
+                <div class="form-group">
+                    <label for="deptName">Department Name</label>
+                    <input type="text" id="deptName" name="name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('addDeptModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Edit Department Modal -->
+    <div class="form-modal" id="editDeptModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Department</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="editDeptForm">
+                <input type="hidden" id="editDeptId">
+                <div class="form-group">
+                    <label for="editDeptName">Department Name</label>
+                    <input type="text" id="editDeptName" name="name" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('editDeptModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Inline verification script -->
+    <script>
+        console.log('🔍 HTML loaded, about to load main.js');
+        window.addEventListener('error', function(e) {
+            console.error('❌ JavaScript Error:', e.message, e.filename, e.lineno);
+        });
+    </script>
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script>
+        console.log('🔍 After main.js load, API_BASE =', typeof API_BASE !== 'undefined' ? API_BASE : 'UNDEFINED');
+    </script>
+    <script src="scripts/departments.js?v=FORCE-RELOAD-2024-01-27"></script>
+</body>
+</html>

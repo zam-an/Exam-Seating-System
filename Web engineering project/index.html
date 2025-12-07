@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Exam Seating Management System</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <div class="logo">
+                <h1>Exam Seating System</h1>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required value="admin">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required value="admin123">
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Inline verification script -->
+    <script>
+        console.log('🔍 HTML loaded, about to load main.js');
+        window.addEventListener('error', function(e) {
+            console.error('❌ JavaScript Error:', e.message, e.filename, e.lineno);
+        });
+    </script>
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script>
+        console.log('🔍 After main.js load, API_BASE =', typeof API_BASE !== 'undefined' ? API_BASE : 'UNDEFINED');
+    </script>
+</body>
+</html>

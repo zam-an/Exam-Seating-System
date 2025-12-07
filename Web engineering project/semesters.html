@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semesters - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/semesters.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="departments.html">Departments</a></li>
+                <li><a href="semesters.html" class="active">Semesters</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="plans.html">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Semesters</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>All Semesters</h2>
+                    <button class="btn btn-success" onclick="openModal('addSemesterModal')">Add Semester</button>
+                </div>
+                <div class="table-container">
+                    <table id="semesters-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Code</th>
+                                <th>Department</th>
+                                <th>Exam Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Semester Modal -->
+    <div class="form-modal" id="addSemesterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Semester</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="addSemesterForm">
+                <div class="form-group">
+                    <label for="semesterTitle">Title</label>
+                    <input type="text" id="semesterTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="semesterCode">Code</label>
+                    <input type="text" id="semesterCode" name="code" required>
+                </div>
+                <div class="form-group">
+                    <label for="semesterDept">Department</label>
+                    <select id="semesterDept" name="department_id" required>
+                        <option value="">Select Department</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="semesterDate">Exam Date</label>
+                    <input type="date" id="semesterDate" name="exam_date" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('addSemesterModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Edit Semester Modal -->
+    <div class="form-modal" id="editSemesterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Semester</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="editSemesterForm">
+                <input type="hidden" id="editSemesterId">
+                <div class="form-group">
+                    <label for="editSemesterTitle">Title</label>
+                    <input type="text" id="editSemesterTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="editSemesterCode">Code</label>
+                    <input type="text" id="editSemesterCode" name="code" required>
+                </div>
+                <div class="form-group">
+                    <label for="editSemesterDept">Department</label>
+                    <select id="editSemesterDept" name="department_id" required>
+                        <option value="">Select Department</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editSemesterDate">Exam Date</label>
+                    <input type="date" id="editSemesterDate" name="exam_date" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('editSemesterModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script src="scripts/semesters.js?v=999"></script>
+</body>
+</html>

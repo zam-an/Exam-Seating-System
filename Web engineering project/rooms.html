@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms - Exam Seating System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/rooms.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Exam Seating System</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="departments.html">Departments</a></li>
+                <li><a href="semesters.html">Semesters</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="rooms.html" class="active">Rooms</a></li>
+                <li><a href="plans.html">Seating Plans</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Rooms</h1>
+                <div class="user-info">
+                    <span>Welcome, Admin</span>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h2>All Rooms</h2>
+                    <button class="btn btn-success" onclick="openModal('addRoomModal')">Add Room</button>
+                </div>
+                <div class="table-container">
+                    <table id="rooms-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Capacity</th>
+                                <th>Rows × Columns</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add Room Modal -->
+    <div class="form-modal" id="addRoomModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Room</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="addRoomForm">
+                <div class="form-group">
+                    <label for="roomCode">Room Code</label>
+                    <input type="text" id="roomCode" name="code" required>
+                </div>
+                <div class="form-group">
+                    <label for="roomName">Room Name</label>
+                    <input type="text" id="roomName" name="name" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="roomCapacity">Capacity</label>
+                        <input type="number" id="roomCapacity" name="capacity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomRows">Rows</label>
+                        <input type="number" id="roomRows" name="rows" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="roomCols">Columns</label>
+                        <input type="number" id="roomCols" name="cols" min="1" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('addRoomModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Edit Room Modal -->
+    <div class="form-modal" id="editRoomModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Room</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="editRoomForm">
+                <input type="hidden" id="editRoomId">
+                <div class="form-group">
+                    <label for="editRoomCode">Room Code</label>
+                    <input type="text" id="editRoomCode" name="code" required>
+                </div>
+                <div class="form-group">
+                    <label for="editRoomName">Room Name</label>
+                    <input type="text" id="editRoomName" name="name" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editRoomCapacity">Capacity</label>
+                        <input type="number" id="editRoomCapacity" name="capacity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoomRows">Rows</label>
+                        <input type="number" id="editRoomRows" name="rows" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoomCols">Columns</label>
+                        <input type="number" id="editRoomCols" name="cols" min="1" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="closeModal('editRoomModal')">Cancel</button>
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js?v=FINAL-V2"></script>
+    <script src="scripts/rooms.js?v=999"></script>
+</body>
+</html>

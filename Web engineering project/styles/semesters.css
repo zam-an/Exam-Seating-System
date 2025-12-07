@@ -1,0 +1,18 @@
+/* Semester-specific styles */
+.filter-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.filter-group {
+    flex: 1;
+}
+
+.filter-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
